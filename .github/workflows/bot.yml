@@ -1,4 +1,4 @@
-name: BFASTREAM TV Bot 24/7
+name: Run BFA STREAM TV Bot 24/7
 
 on:
   workflow_dispatch: # Manual နှိပ်ခိုင်းဖို့
@@ -24,4 +24,18 @@ jobs:
       - name: Run Bot
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: python app.py
+        run: |
+          # app.py ကို background ရွှေ့ပြီး terminal block မဖြစ်အောင် ကျော်ခိုင်းခြင်း
+          nohup python app.py > bot.log 2>&1 &
+          disown -a
+          
+          echo "Bot started successfully in background..."
+          sleep 10
+          
+          # အကယ်၍ error ရှိခဲ့ရင် ချက်ချင်းသိနိုင်အောင် log ထုတ်ပြခြင်း
+          echo "=== BOT LOG ==="
+          cat bot.log
+          
+          echo "Keeping the bot alive..."
+          sleep 340m # Timeout မဖြစ်ခင်အထိ ဆက်တိုက် run ထားပေးခြင်း
+          
