@@ -21,7 +21,7 @@ ADMIN_FB_URL_4 = "https://www.facebook.com/share/1D51YRzmjL/"
 TIKTOK_SHOP_URL_4 = "https://vt.tiktok.com/ZS9jeujKenGgm-N6gSJ/"
 
 @bot.message_handler(commands=['start', 'help'])
-def send_welcome_bot4(message):
+def send_welcome_bot(message):
     try:
         welcome_text = (
             "👋 **မင်္ဂလာပါ သယ်ရင်းရေ...**\n"
@@ -38,10 +38,10 @@ def send_welcome_bot4(message):
             InlineKeyboardButton("👤 Admin FB Account", url=ADMIN_FB_URL_4)
         )
         bot.send_message(message.chat.id, welcome_text, parse_mode="Markdown", reply_markup=markup)
-    except Exception as e: logger.error(f"Bot 4 welcome error: {e}")
+    except Exception as e: logger.error(f"Bot  welcome error: {e}")
 
 @bot.message_handler(content_types=['new_chat_members'])
-def welcome_new_member_bot4(message):
+def welcome_new_member_botnewssage):
     for new_member in message.new_chat_members:
         if new_member.is_bot: continue
         try:
@@ -62,17 +62,17 @@ def welcome_new_member_bot4(message):
                 try: bot.delete_message(message.chat.id, sent_msg.message_id)
                 except: pass
             threading.Thread(target=delete_msg, daemon=True).start()
-        except Exception as e: logger.error(f"Bot 4 new member welcome error: {e}")
+        except Exception as e: logger.error(f"Bot  new member welcome error: {e}")
 
 @bot.message_handler(func=lambda message: True)
-def handle_all_other_messages_bot4(message):
+def handle_all_other_messages_bot(message):
     try:
         if message.content_type != 'text': return
         bot.reply_to(message, "💡 BFA STREAM TV ဝန်ဆောင်မှုများ ရယူရန်အတွက် /start ဟု နှိပ်ပေးပါ သယ်ရင်း။")
-    except Exception as e: logger.error(f"Bot 4 message handler error: {e}")
+    except Exception as e: logger.error(f"Bot  message handler error: {e}")
 
 @app.route('/', methods=['GET'])
-def index(): return "Bot 4 is running!"
+def index(): return "Bot  is running!"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
