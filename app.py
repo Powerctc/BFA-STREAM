@@ -3,14 +3,12 @@ import time
 import threading
 import logging
 import telebot
-from flask import Flask, request
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__)
-# ပုံမှန် BOT_TOKEN နာမည်အတိုင်းပဲ ပြန်သုံးပါ
+# GitHub Secrets ထဲက BOT_TOKEN ကို ဖတ်ခြင်း
 TOKEN = os.environ.get("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN, threaded=False)
 
@@ -72,17 +70,9 @@ def handle_all_other_messages(message):
         bot.reply_to(message, "💡 BFA STREAM TV ဝန်ဆောင်မှုများ ရယူရန်အတွက် /start ဟု နှိပ်ပေးပါ သယ်ရင်း။")
     except Exception as e: logger.error(f"Message handler error: {e}")
 
-@app.route('/', methods=['GET'])
-def index(): return "Bot is running!"
-
-@app.route('/webhook', methods=['POST'])
-def webhook():
-    if request.headers.get('content-type') == 'application/json':
-        json_string = request.get_data().decode('utf-8')
-        update = telebot.types.Update.de_json(json_string)
-        bot.process_new_updates([update])
-        return ''
-    else: return 'Forbidden', 403
-
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    logger.info("Bot is starting with Long Polling...")
+    # အဟောင်းက Webhook တွေကို ဖျက်ပြီး ပတ်ခိုင်းထားတဲ့အတွက် ပုံမှန်အတိုင်း မက်ဆေ့ခ်ျတွေ ချက်ချင်း ပြန်တုံ့ပြန်ပါလိမ့်မယ်
+    bot.remove_webhook()
+    bot.infinity_polling(skip_pending=True)
+    
