@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 TOKEN = os.environ.get("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN, threaded=False)
 
-FOTMOV_DOWN_URL_4 = "https://t.me/fotmovtv/467"
+FOTMOV_DOWN_URL_4 = "https://t.me/Fotmovdownloader/6"
 DIRECT_WATCH_URL_4 = "https://bamarthan-one.vercel.app/"
 TIKTOK_DOWN_URL_4 = "https://t.me/tknowatermarkdownloader"
 ADMIN_GROUP_URL_4 = "https://t.me/addlist/AP4JevHUe7BkMDk1"
