@@ -31,6 +31,7 @@ def send_welcome(message):
         markup = InlineKeyboardMarkup(row_width=1)
         markup.add(
             InlineKeyboardButton("📥 BFA STREAM TV DOWN ရန်", url=FOTMOV_DOWN_URL_4),
+            InlineKeyboardButton("📥 BFA STREAM TV DOWN ရန်", url=WEB_DOWN_URL_4),
             InlineKeyboardButton("🌐 iOS/PC/SMART တိုက်ရိုက်ကြည့်ရန်", url=DIRECT_WATCH_URL_4),
             InlineKeyboardButton("🎬 TikTok Video Downloader", url=TIKTOK_DOWN_URL_4),
             InlineKeyboardButton("🇹🇭 TikTok SHOP", url=TIKTOK_SHOP_URL_4),
