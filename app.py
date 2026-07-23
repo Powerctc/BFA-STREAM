@@ -15,9 +15,10 @@ bot = telebot.TeleBot(TOKEN, threaded=False)
 FOTMOV_DOWN_URL_4 = "https://t.me/BFASTREAMDownloader/6"
 WEB_DOWN_URL_4 = "http://bfa-stream-apk-downloader.vercel.app"
 DIRECT_WATCH_URL_4 = "https://bamarthan-one.vercel.app/"
+DIRECT2_WATCH_URL_4 = "https://bamarthan.vercel.app/"
 TIKTOK_DOWN_URL_4 = "https://t.me/tknowatermarkdownloader"
 ADMIN_GROUP_URL_4 = "https://t.me/addlist/AP4JevHUe7BkMDk1"
-ADMIN_FB_URL_4 = "https://www.facebook.com/share/1D51YRzmjL/"
+ADMIN_FB_URL_4 = "https://www.facebook.com/share/1BX1NQ93nG/"
 TIKTOK_SHOP_URL_4 = "https://vt.tiktok.com/ZS9jeujKenGgm-N6gSJ/"
 
 @bot.message_handler(commands=['start', 'help'])
@@ -33,6 +34,7 @@ def send_welcome(message):
             InlineKeyboardButton("📥 BFA STREAM TV DOWN ရန်", url=FOTMOV_DOWN_URL_4),
             InlineKeyboardButton("📥 BFA STREAM TV DOWN ရန်", url=WEB_DOWN_URL_4),
             InlineKeyboardButton("🌐 iOS/PC/SMART တိုက်ရိုက်ကြည့်ရန်", url=DIRECT_WATCH_URL_4),
+            InlineKeyboardButton("🌐 iOS/PC/SMART တိုက်ရိုက်ကြည့်ရန်", url=DIRECT2_WATCH_URL_4),
             InlineKeyboardButton("🎬 TikTok Video Downloader", url=TIKTOK_DOWN_URL_4),
             InlineKeyboardButton("🇹🇭 TikTok SHOP", url=TIKTOK_SHOP_URL_4),
             InlineKeyboardButton("👥 Admin Group/Channel", url=ADMIN_GROUP_URL_4),
