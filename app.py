@@ -140,9 +140,14 @@ def handle_all_other_messages(message):
 
 if __name__ == "__main__":
     logger.info("🚀 Bot is starting with Long Polling...")
-    try:
-        bot.remove_webhook()
-        bot.infinity_polling(skip_pending=True, timeout=60, long_polling_timeout=60)
-    except Exception as e:
-        logger.error(f"Bot crashed: {e}")
-        raise
+    while True:
+        try:
+            bot.remove_webhook()
+            bot.infinity_polling(
+                skip_pending=True, 
+                timeout=60, 
+                long_polling_timeout=60
+            )
+        except Exception as e:
+            logger.error(f"⚠️ Polling exception occurred: {e}. Restarting in 5 seconds...")
+            time.sleep(5)
